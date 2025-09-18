@@ -43,3 +43,32 @@ project-root/
 │
 │── docker-compose.yml             # Chạy backend + db bằng Docker (tuỳ chọn)
 │── README.md
+⚙️ Công nghệ sử dụng
+Backend:
+
+Node.js
+
+Express.js
+
+PostgreSQL
+
+[Sequelize hoặc Knex] (tùy bạn chọn ORM)
+
+JWT
+ cho xác thực
+
+Socket.io
+ cho chat real-time
+
+Frontend:
+
+React
+ + Vite
+
+TailwindCSS
+ để styling
+
+Axios
+ để gọi API
+
+[Context API] quản lý state (Auth, Socket)
