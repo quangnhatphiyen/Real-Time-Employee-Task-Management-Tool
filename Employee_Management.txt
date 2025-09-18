@@ -1,0 +1,60 @@
+-- ========================
+-- 1. Bảng users
+-- ========================
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    phone VARCHAR(20) UNIQUE,
+    password VARCHAR(255), -- hash password
+    role VARCHAR(20) CHECK (role IN ('owner', 'employee')) NOT NULL,
+    access_code VARCHAR(6), -- mã OTP 6 chữ số
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ========================
+-- 2. Bảng employees
+-- (Liên kết tới users)
+-- ========================
+CREATE TABLE IF NOT EXISTS employees (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    department VARCHAR(100),
+    position VARCHAR(100),
+    schedule JSONB, -- lưu lịch làm việc (ngàygiờ) dạng JSON
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ========================
+-- 3. Bảng tasks
+-- ========================
+CREATE TABLE IF NOT EXISTS tasks (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    description TEXT,
+    status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'in_progress', 'done')),
+    assigned_to INT REFERENCES employees(id) ON DELETE SET NULL,
+    created_by INT REFERENCES users(id) ON DELETE SET NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ========================
+-- 4. Bảng messages (chat realtime)
+-- ========================
+CREATE TABLE IF NOT EXISTS messages (
+    id SERIAL PRIMARY KEY,
+    sender_id INT REFERENCES users(id) ON DELETE CASCADE,
+    receiver_id INT REFERENCES users(id) ON DELETE CASCADE,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ========================
+-- 5. Indexes để tối ưu
+-- ========================
+CREATE INDEX idx_users_role ON users(role);
+CREATE INDEX idx_tasks_status ON tasks(status);
+CREATE INDEX idx_messages_sender_receiver ON messages(sender_id, receiver_id);
