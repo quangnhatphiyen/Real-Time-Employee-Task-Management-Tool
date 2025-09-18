@@ -43,4 +43,4 @@ project-root/
 │
 │── docker-compose.yml             # Chạy backend + db bằng Docker (tuỳ chọn)
 │── README.md
-<img width="625" height="733" alt="image" src="https://github.com/user-attachments/assets/d7bee885-5cff-4b96-b028-5278da9bcd1c" />
+
