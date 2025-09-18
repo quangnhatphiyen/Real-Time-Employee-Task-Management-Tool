@@ -43,18 +43,3 @@ project-root/
 │
 │── docker-compose.yml             # Chạy backend + db bằng Docker (tuỳ chọn)
 │── README.md
-## ⚙️ Công nghệ sử dụng
-
-### 🔹 Backend
-- **Node.js** – Nền tảng chạy JavaScript phía server.
-- **Express.js** – Framework xây dựng API nhanh gọn.
-- **PostgreSQL** – Hệ quản trị cơ sở dữ liệu quan hệ.
-- **Sequelize hoặc Knex** – ORM/Query builder để thao tác DB (bạn chọn 1).
-- **JWT (JSON Web Token)** – Xác thực & phân quyền.
-- **Socket.io** – Giao tiếp **real-time** (chat, thông báo, cập nhật dữ liệu).
-
-### 🔹 Frontend
-- **React + Vite** – Xây dựng giao diện người dùng nhanh và tối ưu.
-- **TailwindCSS** – Thư viện CSS utility-first để styling.
-- **Axios** – Gọi API từ frontend tới backend.
-- **Context API** – Quản lý state toàn cục (Auth, User, Socket).
