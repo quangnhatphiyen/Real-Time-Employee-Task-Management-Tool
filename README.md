@@ -124,6 +124,7 @@ Phân quyền nâng cao (Admin/Manager/Employee)
 Tích hợp CI/CD (GitHub Actions)
 
 Deploy lên Vercel (FE) + Render/Heroku (BE)
+<img width="1613" height="1168" alt="image" src="https://github.com/user-attachments/assets/47e5e917-0d79-4c9f-887f-1cc4f8a3afb3" />
 
 👨‍💻 Tác giả
 
